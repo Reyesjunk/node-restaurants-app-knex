@@ -1,8 +1,35 @@
 const { DEV } = require('./config');
 const knex = require('knex')(DEV);
-
-// clear the console before each run
+// the console before each run
 process.stdout.write('\033c');
+
+// knex('restaurants')
+//   .returning(['id', 'name', 'cuisine', 'borough', 'address_building_number', 'address_street', 'address_zipcode'])
+//   .where({"nyc_restaurant_id": "50018834"} )
+//   .update({name: "CRAZY STACY"})
+//   .then(results => console.log(JSON.stringify(results, null, 4)));
+
+// knex('restaurants')
+//     .where('nyc_restaurant_id', null)
+//     .del();
+//DELETE 
+// knex.select('id', 'date', 'grade', 'score', 'restaurant_id')
+//   .from('grades')
+//   .where('id', 22)
+//   .then(results => console.log(JSON.stringify(results, null, 4)));
+
+knex.schema.createTable('users', function (table) {
+  table.increments();
+  table.string('name');
+  table.timestamps();
+})
+  // .then(results => console.log(result));
+
+
+// knex.schema.dropTable('inspectors')
+// .then(results => console.log(res));
+
+
 
 // knex.select('id', 'name', 'borough', 'cuisine')
 //     .from('restaurants')
